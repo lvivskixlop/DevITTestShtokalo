@@ -1,0 +1,23 @@
+<div class="flex-col admin-table">
+    <div class="flex-row-space table-row headers">
+      <div>
+        <b>Post</b>
+      </div>
+    </div>
+    <div class="scroll-container">
+      <div class="flex-col table-col" *ngFor="let post of posts">
+        <div class="flex-row-space table-row">
+          <div>
+            <span>{{post}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<mat-paginator #paginator
+              [pageIndex]="pageIndex"
+              [length]="postsCount" 
+              [pageSize]="postsPerPage" 
+              (page)="pageChanged($event)">
+</mat-paginator>
