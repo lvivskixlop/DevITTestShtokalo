@@ -1,7 +1,7 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
+const { v4 } = require("uuid");
+
 module.exports = (sequelize, DataTypes) => {
   class Feed extends Model {
     /**
@@ -13,12 +13,20 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Feed.init({
-    id: DataTypes.STRING,
-    feed: DataTypes.TEXT
-  }, {
-    sequelize,
-    modelName: 'Feed',
-  });
+  Feed.init(
+    {
+      id: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+      },
+      feed: DataTypes.TEXT,
+      link: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "Feed",
+    }
+  );
+  Feed.beforeCreate((feed) => (feed.id = v4()));
   return Feed;
 };
