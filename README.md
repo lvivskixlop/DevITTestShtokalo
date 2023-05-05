@@ -2,29 +2,24 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
 
-## Development server
+## START PROJECT
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+First you need to create connection in MySQL [https://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-create-connection.html](https://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-create-connection.html)  
+hostmane: `localhost`  
+port: `3306`
+username: `root`  
+password: `1111`  
+Then you need to create a schema [https://docs.rapidminer.com/7.6/server/installation/creating_mysql_db.html](https://docs.rapidminer.com/7.6/server/installation/creating_mysql_db.html)  
+database name: `db`  
+username: `root`  
+password: `1111`
 
-## Code scaffolding
+1. `npm i`
+2. `ng serve`
+3. `cd src`
+4. `node server.js`
+5. `npx sequelize-cli db:migrate`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-npm i
-npx sequelize-cli db:migrate
+After running those commands navigate to [http://localhost:4200/](http://localhost:4200/) in your browser  
+login: `test`  
+password: `test`
