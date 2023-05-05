@@ -25,7 +25,7 @@ sequelize
     console.error("Unable to connect to the database: ", error);
   });
 
-cron.schedule("* * * * * *", rssParser);
+cron.schedule("* 30 * * * *", rssParser);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

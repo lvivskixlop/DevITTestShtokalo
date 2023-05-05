@@ -5,6 +5,7 @@ import { PostService } from '../services/api/post.service';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { PostDetailsComponent } from '../post-details/post-details.component';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-admin',
@@ -24,7 +25,8 @@ export class AdminComponent implements OnInit {
   constructor(
     public adminService: AdminService,
     public postService: PostService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authService: AuthenticationService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -113,5 +115,9 @@ export class AdminComponent implements OnInit {
         }
       })
     );
+  }
+
+  public logout(): void {
+    this.authService.logout();
   }
 }

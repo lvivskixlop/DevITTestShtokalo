@@ -1,9 +1,14 @@
 <div class="flex-row-space admin-title">
   <div class="flex-row">
+    <button (click)="logout()">Logout</button>
     <button (click)="createPost()">NEW POST</button>
   </div>
   <div>
-    <input [(ngModel)]="searchText" matInput />
+    <input
+      [(ngModel)]="searchText"
+      placeholder="search by text in post"
+      matInput
+    />
     <button (click)="performSearch()">Search</button>
   </div>
 </div>

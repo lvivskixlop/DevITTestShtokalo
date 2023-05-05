@@ -5,4 +5,5 @@
 .sort-button {
   color: blue;
   text-decoration: underline;
+  cursor: pointer;
 }
