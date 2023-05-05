@@ -1,0 +1,50 @@
+<div class="flex-row-space admin-title">
+  <div class="flex-row">
+    <button (click)="logout()">Logout</button>
+    <button (click)="createPost()">NEW POST</button>
+  </div>
+  <div>
+    <input
+      [(ngModel)]="searchText"
+      placeholder="search by text in post"
+      matInput
+    />
+    <button (click)="performSearch()">Search</button>
+  </div>
+</div>
+<div class="flex-col admin-table">
+  <div class="flex-row-space">
+    <div>
+      <b (click)="sort()" class="sort-button"
+        >Post ({{ isDesc ? "DESC" : "ASC" }} by publish date)</b
+      >
+    </div>
+    <div class="x-short-fixed">
+      <b>Actions</b>
+    </div>
+  </div>
+  <div class="scroll-container">
+    <div class="flex-col table-col" *ngFor="let post of posts">
+      <div class="flex-row-space">
+        <div>
+          <span class="post-text">{{ post.post }}</span>
+        </div>
+        <div class="x-short-fixed">
+          <div class="buttons">
+            <button (click)="updatePost(post)">UPDATE</button>
+            <button (click)="deletePost(post)">DELETE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-paginator
+  #paginator
+  [pageIndex]="pageIndex"
+  [length]="postsCount"
+  [pageSize]="postsPerPage"
+  (page)="pageChanged($event)"
+>
+</mat-paginator>

@@ -1,1 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.admin-title {
+  margin: 16px;
+  width: auto;
+}
+
+.admin-table {
+  height: calc(100% - 114px);
+  margin: 16px;
+  background: #f2f2f2;
+  font-size: 14px;
+}
+
+.scroll-container {
+  z-index: 1;
+  height: 100%;
+  overflow-y: scroll;
+  width: calc(100% + 5px);
+  margin-left: 5.5px;
+}
+
+.table-col {
+  width: 100%;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px;
+  border-style: solid;
+}
+
+.flex-row-space {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.flex-row-space,
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.x-short-fixed {
+  flex: 0 0 50px;
+}
+
+.admin-details-short {
+  width: 522px;
+}
+
+.wide-label {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+.wide {
+  height: 64px !important;
+  resize: none;
+  font-size: 13.3px;
+  font-family: Arial;
+  padding: 3px 2px 3px 6px;
+}
+
+.input {
+  width: 398px;
+  margin: 4px 0;
+}

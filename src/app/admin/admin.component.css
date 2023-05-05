@@ -1,0 +1,9 @@
+.post-text {
+  text-overflow: ellipsis;
+}
+
+.sort-button {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
