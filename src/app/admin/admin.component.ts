@@ -60,7 +60,17 @@ export class AdminComponent implements OnInit {
     this.loadPosts();
   }
 
-  public deletePost(post: Post): void {}
+  public createPost(): void {
+    this.updatePost({ feedId: this.posts[0].feedId } as Post);
+  }
+
+  public deletePost(post: Post): void {
+    this.subscriptions.push(
+      this.postService.delete(post.id!).subscribe((result) => {
+        this.loadPosts();
+      })
+    );
+  }
 
   public updatePost(post?: Post): void {
     const dialogRef = this.dialog.open(PostDetailsComponent, {

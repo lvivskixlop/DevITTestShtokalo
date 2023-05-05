@@ -1,5 +1,5 @@
 const db = require("../models/index");
-const { XMLBuilder } = require("fast-xml-parser");
+const { XMLParser, XMLBuilder } = require("fast-xml-parser");
 const { Op } = require("sequelize");
 
 module.exports = {
@@ -21,7 +21,9 @@ module.exports = {
   },
 
   create: async (post) => {
+    const parser = new XMLParser();
     const newPost = await db.Post.build(post);
+    newPost.guid = parser.parse(newPost.post)?.guid || null;
     await newPost.save();
   },
 
@@ -55,23 +57,23 @@ module.exports = {
     return await db.Post.findOne({ where: { guid } });
   },
 
-  update: async (feedId, newPost) => {
-    const post = await db.Post.findOne({
-      where: { guid: newPost.guid, feedId },
+  update: async (post) => {
+    const newPost = await db.Post.findOne({
+      where: { id: post.id },
     });
-    post.post = newPost.post;
-    post.feedId = newPost.feedId;
-    post.guid = newPost.guid;
-    await post.save();
+    newPost.post = post.post;
+    newPost.feedId = post.feedId;
+    newPost.guid = post.guid;
+    await newPost.save();
   },
 
-  delete: async (feedId, guid) => {
+  delete: async (id, feedId) => {
     const conditions = { where: {} };
     if (feedId) {
       conditions.where.feedId = feedId;
     }
-    if (guid) {
-      conditions.where.guid = guid;
+    if (id) {
+      conditions.where.id = id;
     }
 
     await db.Post.destroy(conditions);

@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { XMLParser, XMLBuilder } = require("fast-xml-parser");
+const { XMLParser } = require("fast-xml-parser");
 const postsService = require("./posts-service");
 const feedService = require("./feeds-service");
 

@@ -1,8 +1,8 @@
 interface Post {
-  id: string;
-  post: string;
-  feedId: string;
-  guid: number;
+  id?: string;
+  post?: string;
+  feedId?: string;
+  guid?: number;
 }
 
 interface Feed {

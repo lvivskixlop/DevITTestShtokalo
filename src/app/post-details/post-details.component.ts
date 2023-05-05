@@ -29,8 +29,8 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
     public postService: PostService
   ) {
     this.post = data ? Object.assign({}, data) : <Post>{};
-    this.isCreateMode = data ? false : true;
-    this.postText.setValue(this.post.post);
+    this.isCreateMode = data.post ? false : true;
+    this.postText.setValue(this.post.post || '');
     this.form = fb.group({
       postText: this.postText,
     });

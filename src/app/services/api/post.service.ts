@@ -14,18 +14,18 @@ export class PostService {
   constructor(private http: HttpClient) {}
 
   public create(post: Post): Observable<void> {
-    return this.http.post<any>('api/rss', post);
+    return this.http.post<void>('api/rss', post);
   }
 
   public get(params?: PostsRequestParams): Observable<PostsResponse> {
-    return this.http.get<any>('api/rss', { params: { ...params } });
+    return this.http.get<PostsResponse>('api/rss', { params: { ...params } });
   }
 
   public update(post: Post): Observable<void> {
-    return this.http.put<any>('api/rss', post);
+    return this.http.put<void>('api/rss', post);
   }
 
   public delete(id: string): Observable<void> {
-    return this.http.delete<any>('api/rss' + id);
+    return this.http.delete<void>('api/rss?id=' + id);
   }
 }
