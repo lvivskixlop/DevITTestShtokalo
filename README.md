@@ -14,13 +14,11 @@ database name: `db`
 username: `root`  
 password: `1111`
 
-1. `git clone https://github.com/lvivskixlop/DevITTestShtokalo.git`
-2. `cd DevITTestShtokalo`
-3. `npm i`
-4. `ng serve`
-5. `cd src`
-6. `node server.js`
-7. `npx sequelize-cli db:migrate`
+1. `npm i`
+2. `ng serve`
+3. `cd src`
+4. `node server.js`
+5. `npx sequelize-cli db:migrate`
 
 After running those commands navigate to [http://localhost:4200/](http://localhost:4200/) in your browser  
 login: `test`  
