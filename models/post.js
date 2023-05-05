@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       post: DataTypes.TEXT,
       feedId: DataTypes.STRING,
       guid: DataTypes.INTEGER,
+      publicationDate: DataTypes.DATE,
     },
     {
       sequelize,

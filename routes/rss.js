@@ -7,12 +7,21 @@ const rssRoutes = express.Router();
 rssRoutes.get("/", async (req, res) => {
   try {
     const params = {};
-    const feed = await feedsService.getByLink(req.query.link);
 
-    if (feed) {
-      params.feedId = feed.id;
+    if (!req.query.feedId) {
+      const feed = await feedsService.getByLink(req.query.link);
+      if (feed) {
+        params.feedId = feed.id;
+      } else {
+        res.status(404).send("Feed not found");
+      }
     } else {
-      res.status(404).send("Feed not found");
+      const feed = await feedsService.get(req.query.feedId);
+      if (feed) {
+        params.feedId = feed.id;
+      } else {
+        res.status(404).send("Feed not found");
+      }
     }
 
     if (req.query.limit) {

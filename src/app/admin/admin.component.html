@@ -2,11 +2,17 @@
   <div class="flex-row">
     <button (click)="createPost()">NEW POST</button>
   </div>
+  <div>
+    <input [(ngModel)]="searchText" matInput />
+    <button (click)="performSearch()">Search</button>
+  </div>
 </div>
 <div class="flex-col admin-table">
   <div class="flex-row-space">
     <div>
-      <b>Post</b>
+      <b (click)="sort()" class="sort-button"
+        >Post ({{ isDesc ? "DESC" : "ASC" }} by publish date)</b
+      >
     </div>
     <div class="x-short-fixed">
       <b>Actions</b>

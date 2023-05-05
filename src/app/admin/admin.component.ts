@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Post, PostsRequestParams } from '../interfaces/common';
 import { AdminService } from '../services/admin.service';
 import { PostService } from '../services/api/post.service';
@@ -12,11 +12,14 @@ import { PostDetailsComponent } from '../post-details/post-details.component';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
+  @Input() searchText: string = '';
   private subscriptions: Subscription[] = [];
   public posts: Post[] = [];
   public postsCount: number = 0;
   public pageIndex: number = 0;
   public postsPerPage: number = 20;
+  public isDesc: boolean = true;
+  public feedId: string = '';
 
   constructor(
     public adminService: AdminService,
@@ -45,6 +48,7 @@ export class AdminComponent implements OnInit {
       this.postService.get(params).subscribe((result) => {
         this.posts = result.rows;
         this.postsCount = result.count;
+        this.loadFeedId();
 
         if (!result.count && this.pageIndex > 0) {
           this.pageIndex--;
@@ -83,5 +87,31 @@ export class AdminComponent implements OnInit {
         this.loadPosts();
       }
     });
+  }
+
+  public loadFeedId(): void {
+    //TODO get feed and feed id in normal way
+    this.feedId = this.posts[0].feedId || '';
+  }
+
+  public sort(): void {
+    this.isDesc = !this.isDesc;
+    this.posts = this.posts.reverse();
+  }
+
+  public performSearch(): void {
+    const params: PostsRequestParams = {
+      feedId: this.feedId,
+      limit: this.postsPerPage,
+      offset: 0,
+      text: this.searchText,
+    };
+    this.subscriptions.push(
+      this.postService.get(params).subscribe((result) => {
+        if (result.count > 0) {
+          this.posts = result.rows;
+        }
+      })
+    );
   }
 }

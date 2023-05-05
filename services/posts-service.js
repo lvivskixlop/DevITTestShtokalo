@@ -14,6 +14,7 @@ module.exports = {
           post: builder.build(item),
           feedId: id,
           guid: item.guid,
+          publicationDate: new Date(item.pubDate),
         });
         await newPost.save();
       }
@@ -24,11 +25,12 @@ module.exports = {
     const parser = new XMLParser();
     const newPost = await db.Post.build(post);
     newPost.guid = parser.parse(newPost.post)?.guid || null;
+    newPost.publicationDate = new Date();
     await newPost.save();
   },
 
   get: async (params) => {
-    const conditions = { where: {} };
+    const conditions = { where: {}, order: [["publicationDate", "DESC"]] };
 
     if (params.limit) {
       conditions.limit = params.limit;
@@ -64,6 +66,7 @@ module.exports = {
     newPost.post = post.post;
     newPost.feedId = post.feedId;
     newPost.guid = post.guid;
+    newPost.publicationDate = post.publicationDate;
     await newPost.save();
   },
 

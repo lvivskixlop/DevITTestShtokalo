@@ -3,7 +3,9 @@ const cron = require("node-cron");
 const rssParser = require("./services/rss-parser");
 const apiRoutes = require("./routes/index");
 const { Sequelize } = require("sequelize");
+const bodyParser = require("body-parser");
 
+const jsonParser = bodyParser.json();
 const sequelize = new Sequelize("db", "root", "1111", {
   host: "localhost",
   port: 3306,
@@ -12,7 +14,7 @@ const sequelize = new Sequelize("db", "root", "1111", {
 const app = express();
 const port = 3000;
 
-app.use("/api", apiRoutes);
+app.use("/api", jsonParser, apiRoutes);
 
 sequelize
   .authenticate()

@@ -3,6 +3,7 @@ interface Post {
   post?: string;
   feedId?: string;
   guid?: number;
+  publicationDate?: Date;
 }
 
 interface Feed {

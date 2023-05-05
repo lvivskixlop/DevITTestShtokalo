@@ -21,6 +21,9 @@ module.exports = {
       guid: {
         type: Sequelize.INTEGER,
       },
+      publicationDate: {
+        type: Sequelize.DATE,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
