@@ -32,7 +32,7 @@ module.exports = {
       conditions.limit = params.limit;
     }
     if (params.offset) {
-      conditions.offset = params.offset;
+      conditions.offset = params.offset * params.limit;
     }
 
     if (params.feedId) {
@@ -42,12 +42,13 @@ module.exports = {
       conditions.where.guid = params.guid;
     }
     if (params.text) {
+      //TODO search not including tags
       conditions.where.post = {
-        [Op.like]: params.text,
+        [Op.like]: "%" + params.text + "%",
       };
     }
 
-    return await db.Post.findAll(conditions);
+    return await db.Post.findAndCountAll(conditions);
   },
 
   getOne: async (guid) => {

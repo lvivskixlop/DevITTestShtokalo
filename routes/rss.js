@@ -21,7 +21,7 @@ rssRoutes.get("/", async (req, res) => {
     params.offset = Number(req.query.offset);
   }
   if (req.query.text) {
-    params.limit = req.query.text;
+    params.text = req.query.text;
   }
 
   const posts = await postsService.get(params);

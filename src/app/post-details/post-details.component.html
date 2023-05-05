@@ -1,0 +1,24 @@
+<form>
+  <div class="admin-details admin-details-short flex-col">
+    <div class="flex-row-space">
+      <b *ngIf="!isCreateMode">Edit Post</b>
+      <b *ngIf="isCreateMode">Create Post</b>
+      <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="flex-row-space">
+      <span class="wide-label">Post</span>
+      <textarea
+        class="input wide"
+        [formControl]="postText"
+        type="text"
+        matInput
+      ></textarea>
+    </div>
+    <div class="flex-row-space">
+      <button (click)="cancel()">CANCEL</button>
+      <button (click)="save()">SAVE POST</button>
+    </div>
+  </div>
+</form>
