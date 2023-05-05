@@ -4,15 +4,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## START PROJECT
 
-First you need to create connection in MySQL [https://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-create-connection.html](https://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-create-connection.html)  
+First you need to create connection in MySQL: [https://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-create-connection.html](https://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-create-connection.html)  
 hostmane: `localhost`  
 port: `3306`
 username: `root`  
 password: `1111`  
-Then you need to create a schema [https://docs.rapidminer.com/7.6/server/installation/creating_mysql_db.html](https://docs.rapidminer.com/7.6/server/installation/creating_mysql_db.html)  
+Then you need to create a schema: [https://docs.rapidminer.com/7.6/server/installation/creating_mysql_db.html](https://docs.rapidminer.com/7.6/server/installation/creating_mysql_db.html)  
 database name: `db`  
 username: `root`  
 password: `1111`
+
+After those manipulations you need to clone this repository  
+`git clone https://github.com/lvivskixlop/DevITTestShtokalo.git`  
+And then you should navigate to created folder  
+`cd DevITTestShtokalo`  
+Then you should run next commands:
 
 1. `npm i`
 2. `ng serve`
